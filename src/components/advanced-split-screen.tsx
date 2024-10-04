@@ -1,9 +1,9 @@
 'use client'
 
-import React, { useState, useEffect, useRef, FC } from 'react'
-import Split from 'react-split'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Grid, LayoutTemplate, Play, Pause, Menu, Lock, Unlock } from 'lucide-react'
+import React, { useState, useEffect, useRef, FC } from 'react';
+import Split from 'react-split';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Grid, LayoutTemplate, Play, Pause, Menu, Lock, Unlock } from 'lucide-react';
 
 const AnimatedBackground = () => {
   return (
@@ -26,29 +26,32 @@ const AnimatedBackground = () => {
         }
         .circle-container {
           position: absolute;
-          transform: translateY(10%);
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
         }
         .circle {
-          width: 100%;
-          height: 100%;
+          width: 20px;
+          height: 20px;
+          background-color: #ffffff;
           border-radius: 50%;
-          background-color: rgba(255, 255, 255, 0.1);
-          animation: rise 15s infinite ease-in;
+          animation: move 5s infinite;
         }
-        @keyframes rise {
+        @keyframes move {
           0% {
-            transform: translateY(0) scale(1);
-            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+          }
+          50% {
+            transform: translate(-50%, -50%) scale(1.5);
           }
           100% {
-            transform: translateY(-1000px) scale(0);
-            opacity: 0;
+            transform: translate(-50%, -50%) scale(1);
           }
         }
       `}</style>
     </div>
-  )
-}
+  );
+};
 import React, { FC } from 'react';
 import { motion } from 'framer-motion';
 
