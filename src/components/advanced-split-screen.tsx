@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useState, useEffect, useRef } from 'react'
-import { FC } from 'react';
 import Split from 'react-split'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Grid, LayoutTemplate, Play, Pause, Menu, Lock, Unlock } from 'lucide-react'
@@ -57,11 +56,11 @@ interface LockIconProps {
   splitView: boolean;
 }
 
-const LockIcon: FC<LockIconProps> = ({ side, isLocked, onLock, splitView }) => {
+const LockIcon = ({ side, isLocked, onLock, splitView }) => {
   return (
     <motion.div
       className={`absolute ${side}-4 top-1/2 transform -translate-y-1/2 z-20 cursor-pointer`}
-      onClick={onLock}
+      onClick={() => onLock(side)}
       initial={false}
       animate={{
         x: splitView ? 0 : side === 'left' ? -100 : 100,
@@ -81,8 +80,7 @@ const LockIcon: FC<LockIconProps> = ({ side, isLocked, onLock, splitView }) => {
         )}
       </motion.div>
     </motion.div>
-  );
-};
+  )
 }
 
 export default function AdvancedDynamicSplitScreen() {
