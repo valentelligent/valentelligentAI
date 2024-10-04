@@ -52,8 +52,7 @@ const AnimatedBackground = () => {
     </div>
   );
 };
-import React, { FC } from 'react';
-import { motion } from 'framer-motion';
+
 
 interface LockIconProps {
   side: 'left' | 'right';
@@ -85,7 +84,7 @@ const LockIcon: FC<LockIconProps> = ({ side, isLocked, onLock, splitView }) => {
   );
 };
 
-export default LockIcon;
+export { LockIcon };
 
 export default function AdvancedDynamicSplitScreen() {
   const [splitView, setSplitView] = useState(true)
@@ -188,7 +187,7 @@ export default function AdvancedDynamicSplitScreen() {
     <div className="h-screen w-full relative overflow-hidden" ref={containerRef}>
       <LockIcon side="left" isLocked={isLeftLocked} onLock={handleLock} splitView={splitView} />
       <LockIcon side="right" isLocked={isRightLocked} onLock={handleLock} splitView={splitView} />
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         {splitView ? (
           <motion.div
             key="split"
