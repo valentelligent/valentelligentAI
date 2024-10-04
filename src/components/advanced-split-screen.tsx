@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, FC } from 'react'
 import Split from 'react-split'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Grid, LayoutTemplate, Play, Pause, Menu, Lock, Unlock } from 'lucide-react'
@@ -49,14 +49,17 @@ const AnimatedBackground = () => {
     </div>
   )
 }
+import React, { FC } from 'react';
+import { motion } from 'framer-motion';
+
 interface LockIconProps {
   side: 'left' | 'right';
   isLocked: boolean;
-  onLock: () => void;
+  onLock: (side: 'left' | 'right') => void;
   splitView: boolean;
 }
 
-const LockIcon = ({ side, isLocked, onLock, splitView }) => {
+const LockIcon: FC<LockIconProps> = ({ side, isLocked, onLock, splitView }) => {
   return (
     <motion.div
       className={`absolute ${side}-4 top-1/2 transform -translate-y-1/2 z-20 cursor-pointer`}
@@ -73,15 +76,13 @@ const LockIcon = ({ side, isLocked, onLock, splitView }) => {
         whileTap={{ scale: 0.9 }}
         className="bg-white rounded-full p-3 shadow-md"
       >
-        {isLocked ? (
-          <Lock className="w-6 h-6 text-black" />
-        ) : (
-          <Unlock className="w-6 h-6 text-black" />
-        )}
+        {isLocked ? '🔒' : '🔓'}
       </motion.div>
     </motion.div>
-  )
-}
+  );
+};
+
+export default LockIcon;
 
 export default function AdvancedDynamicSplitScreen() {
   const [splitView, setSplitView] = useState(true)
