@@ -43,7 +43,6 @@ const AnimatedBackground = () => {
           }
           50% {
             transform: translate(-50%, -50%) scale(1.5);
-          }
           100% {
             transform: translate(-50%, -50%) scale(1);
           }
@@ -52,7 +51,6 @@ const AnimatedBackground = () => {
     </div>
   );
 };
-
 
 interface LockIconProps {
   side: 'left' | 'right';
